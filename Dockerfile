@@ -18,4 +18,8 @@ RUN add-apt-repository \
 RUN apt-get update && apt-get install -y \
     docker-engine \
     && rm -rf /var/lib/apt/lists/*
+# Set the default variable for the tcp connection to docker so that
+# this can be overridden. This IP should work in many cases.
+ENV DOCKER_HOST tcp://172.17.42.1:2375
+
 USER ${user}
