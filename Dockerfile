@@ -5,11 +5,12 @@ FROM jenkins:latest
 ARG user=jenkins
 USER root
 
-# Install prerequisites for docker.
+# Install prerequisites for docker, and other tools.
 RUN apt-get update && apt-get install -y \
     apt-transport-https \
     ca-certificates \
     software-properties-common \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 # Get the apt key.
