@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     software-properties-common \
     build-essential \
+    zip \
     && rm -rf /var/lib/apt/lists/*
 
 # Get the apt key.
