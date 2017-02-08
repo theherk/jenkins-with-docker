@@ -41,8 +41,3 @@ ENV DOCKER_HOST tcp://172.17.42.1:2375
 
 # Finally, switch the user back.
 USER ${user}
-
-ARG git_user=${user}
-ARG git_email=jenkins@jenkins.com
-RUN git config --global user.name ${git_user}; \
-    git config --global user.email ${git_email}
