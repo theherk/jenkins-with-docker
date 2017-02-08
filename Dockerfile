@@ -5,6 +5,9 @@ FROM jenkins:latest
 ARG user=jenkins
 USER root
 
+ARG git_user=jenkins
+ARG git_email=jenkins@jenkins.com
+
 # Install prerequisites for docker, and other tools.
 RUN apt-get update && apt-get install -y \
     apt-transport-https \
@@ -31,6 +34,9 @@ RUN add-apt-repository \
 RUN apt-get update && apt-get install -y \
     docker-engine \
     && rm -rf /var/lib/apt/lists/*
+
+RUN git config --global user.name ${git_user}; \
+    git config --global user.email ${git_email}
 
 # Set the default variable for the tcp connection to docker so that
 # this can be overridden. This IP should work in many cases.
