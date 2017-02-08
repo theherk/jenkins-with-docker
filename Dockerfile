@@ -5,9 +5,6 @@ FROM jenkins:latest
 ARG user=jenkins
 USER root
 
-ARG git_user=jenkins
-ARG git_email=jenkins@jenkins.com
-
 # Install prerequisites for docker, and other tools.
 RUN apt-get update && apt-get install -y \
     apt-transport-https \
@@ -38,6 +35,8 @@ RUN apt-get update && apt-get install -y \
     docker-engine \
     && rm -rf /var/lib/apt/lists/*
 
+ARG git_user=jenkins
+ARG git_email=jenkins@jenkins.com
 RUN git config --global user.name ${git_user}; \
     git config --global user.email ${git_email}
 
