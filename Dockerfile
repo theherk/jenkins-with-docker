@@ -15,6 +15,9 @@ RUN apt-get update && apt-get install -y \
     software-properties-common \
     build-essential \
     zip \
+    python-dev \
+    libffi-dev \
+    libssl-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Get the apt key.
