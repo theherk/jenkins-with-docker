@@ -5,16 +5,11 @@ FROM jenkins:latest
 ARG user=jenkins
 USER root
 
-# Install prerequisites for docker, and other tools.
+# Install prerequisites for docker.
 RUN apt-get update && apt-get install -y \
     apt-transport-https \
     ca-certificates \
     software-properties-common \
-    build-essential \
-    zip \
-    python-dev python3-dev \
-    libffi-dev \
-    libssl-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Get the apt key.
@@ -30,9 +25,14 @@ RUN add-apt-repository \
     debian-$(lsb_release -cs) \
     main"
 
-# Install docker.
+# Install docker and extras.
 RUN apt-get update && apt-get install -y \
     docker-engine \
+    build-essential \
+    zip \
+    python-dev python3-dev \
+    libffi-dev \
+    libssl-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set the default variable for the tcp connection to docker so that
